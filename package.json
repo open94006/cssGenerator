@@ -1,0 +1,13 @@
+{
+    "name": "funnel-css",
+    "version": "1.0.2",
+    "description": "hello css generator",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc --project tsconfig.json",
+        "watch": "tsc --project tsconfig.json && tsc -w"
+    },
+    "author": "",
+    "license": "ISC"
+}
