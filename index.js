@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CssProperty = exports.line = void 0;
 function generateor(data, name) {
     let array = [];
     if (typeof data === 'object') {
@@ -11,7 +8,7 @@ function generateor(data, name) {
     }
     return array;
 }
-function line(json) {
+export function line(json) {
     // 確認裝置大小使用的 css
     const deviceWidth = window.innerWidth;
     if (deviceWidth < 768 && json['sm']) {
@@ -43,10 +40,8 @@ function line(json) {
     document.head.appendChild(styleElement);
     return className;
 }
-exports.line = line;
-class CssProperty {
+export class CssProperty {
 }
-exports.CssProperty = CssProperty;
 CssProperty.textAlign = (align) => ({ 'text-align': align });
 CssProperty.flex = (justifyContent = 'flex-start', alignItems = 'flex-start', direction = 'row') => ({
     display: 'flex',
@@ -84,7 +79,3 @@ CssProperty.borderRadius = (radius) => ({
 CssProperty.letterSpacing = (space) => ({ 'letter-spacing': `${space}px` });
 CssProperty.lineHeight = (height) => ({ 'line-height': `${height}px` });
 CssProperty.fontWeight = (weight) => ({ 'font-weight': weight });
-exports.default = {
-    CssProperty,
-    line,
-};
