@@ -26,7 +26,7 @@ function generateor(data: string | number | { [k: string]: any }, name: string) 
     return array;
 }
 
-export function line(json: { [k: string]: any }) {
+export function line(json: { [k: string]: any }, name?: string) {
     // 確認裝置大小使用的 css
     const deviceWidth = window.innerWidth;
     if (deviceWidth < 768 && json['sm']) {
@@ -46,7 +46,8 @@ export function line(json: { [k: string]: any }) {
     // 隨機生成 class name
     const length = 8;
     const possible = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    let className = possible.charAt(Math.floor(Math.random() * (possible.length - 10)));
+    let className =
+        name && name.length > 0 ? name : possible.charAt(Math.floor(Math.random() * (possible.length - 10)));
     for (let i = 1; i < length; i++) className += possible.charAt(Math.floor(Math.random() * possible.length));
 
     // 建立 <style> 元素
