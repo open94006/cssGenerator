@@ -29,13 +29,19 @@ export function line(json, name) {
     // 隨機生成 class name
     const length = 8;
     const possible = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    let className = name && name.length > 0 ? name : possible.charAt(Math.floor(Math.random() * (possible.length - 10)));
-    for (let i = 1; i < length; i++)
-        className += possible.charAt(Math.floor(Math.random() * possible.length));
+    let className = '';
+    if (name && name.length > 0) {
+        className = name;
+    }
+    else {
+        className = possible.charAt(Math.floor(Math.random() * (possible.length - 10)));
+        for (let i = 1; i < length; i++)
+            className += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
     // 建立 <style> 元素
     const styleElement = document.createElement('style');
     // 將 CSS class 內容添加到 <style> 元素中
-    styleElement.appendChild(document.createTextNode(`.${className}{ ${cssContent} }`));
+    styleElement.appendChild(document.createTextNode(`.${className.replace(' ', '.')}{ ${cssContent} }`));
     // 將 <style> 元素添加到 <head> 區域
     document.head.appendChild(styleElement);
     return className;
